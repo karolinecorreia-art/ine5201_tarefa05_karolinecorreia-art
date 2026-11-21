@@ -247,7 +247,7 @@ ine5201-tarefa05-karolinecorreia-art/
 
 ## Organização do trabalho em dupla
 
-O repositório foi desenvolvido pela dupla com colaboradoras no GitHub, usando git pull antes de cada alteração e git push ao final, com commits em diferentes momentos do desenvolvimento. Além do GitHub Copilot, utilizamos o Claude (Anthropic) como na configuração do VS Code, do Git e do GitHub, para a revisão do nosso código e também para entender quais dados precisam estar no README. 
+O repositório foi desenvolvido pela dupla como colaboradoras no GitHub, usando git pull antes de cada alteração e git push ao final, com commits em diferentes momentos do desenvolvimento. Além do GitHub Copilot, utilizamos o Claude (Anthropic) como na configuração do VS Code, do Git e do GitHub, para a revisão do nosso código e também para entender quais dados precisam estar no README. 
 
 ## Licença e uso
 
