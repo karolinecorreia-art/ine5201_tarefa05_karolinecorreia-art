@@ -39,6 +39,11 @@ def recarregar(window, conn):
     return lista
 
 
+def confirmar_salvar():
+    return sg.popup_yes_no("Salvar as alterações deste produto?", title="Confirmar",
+                           keep_on_top=True) == "Yes"
+
+
 def abrir(conn):
     lista = produtos.listar(conn)
     layout = [
@@ -80,6 +85,8 @@ def abrir(conn):
             window["-EXCLUIR-"].update(disabled=False)
             window["-MSG-"].update("Editando o produto selecionado.", text_color=OK)
         elif evento in ("-CADASTRAR-", "-SALVAR-"):
+            if evento == "-SALVAR-" and not confirmar_salvar():
+                continue
             try:
                 dados = ler_formulario(valores)
                 if evento == "-CADASTRAR-":

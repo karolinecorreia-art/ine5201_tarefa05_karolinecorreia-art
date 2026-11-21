@@ -1,6 +1,8 @@
 # produtos.py: CRUD de produtos, filtros e consultas
 import sqlite3
 
+import conexao
+
 
 def cadastrar(conn, codigo, nome, categoria, preco, estoque_minimo=5):
     if buscar(conn, codigo) is not None:       # validação de código único
@@ -11,9 +13,9 @@ def cadastrar(conn, codigo, nome, categoria, preco, estoque_minimo=5):
             "estoque_minimo) VALUES (?, ?, ?, ?, 0, ?)",
             (codigo, nome, categoria, preco, estoque_minimo))
         conn.commit()
-    except sqlite3.IntegrityError:
-        conn.rollback()
-        raise ValueError(f"Não foi possível cadastrar o código {codigo}.") from None
+    except sqlite3.Error as erro:
+        conexao.desfazer(conn)
+        raise ValueError(conexao.mensagem_erro(erro)) from None
 
 
 def buscar(conn, codigo):
@@ -45,10 +47,14 @@ def listar_categorias(conn):
 
 
 def atualizar(conn, codigo, nome, categoria, preco, estoque_minimo):
-    cursor = conn.execute(
-        "UPDATE produtos SET nome = ?, categoria = ?, preco = ?, estoque_minimo = ? "
-        "WHERE codigo = ?", (nome, categoria, preco, estoque_minimo, codigo))
-    conn.commit()
+    try:
+        cursor = conn.execute(
+            "UPDATE produtos SET nome = ?, categoria = ?, preco = ?, estoque_minimo = ? "
+            "WHERE codigo = ?", (nome, categoria, preco, estoque_minimo, codigo))
+        conn.commit()
+    except sqlite3.Error as erro:
+        conexao.desfazer(conn)
+        raise ValueError(conexao.mensagem_erro(erro)) from None
     if cursor.rowcount == 0:
         raise ValueError("Produto não encontrado.")
 
@@ -58,8 +64,11 @@ def excluir(conn, codigo):
         cursor = conn.execute("DELETE FROM produtos WHERE codigo = ?", (codigo,))
         conn.commit()
     except sqlite3.IntegrityError:
-        conn.rollback()
+        conexao.desfazer(conn)
         raise ValueError("Este produto possui movimentações e não pode ser excluído.") from None
+    except sqlite3.Error as erro:
+        conexao.desfazer(conn)
+        raise ValueError(conexao.mensagem_erro(erro)) from None
     if cursor.rowcount == 0:
         raise ValueError("Produto não encontrado.")
 
@@ -82,9 +91,11 @@ def estoque_baixo(conn):
 
 
 def valor_por_categoria(conn):
+    """Valor em estoque por categoria; categorias vazias aparecem como 'Sem categoria'."""
     return conn.execute(
-        "SELECT categoria, COALESCE(SUM(preco * quantidade), 0) AS valor "
-        "FROM produtos GROUP BY categoria ORDER BY valor DESC").fetchall()
+        "SELECT COALESCE(NULLIF(TRIM(categoria), ''), 'Sem categoria') AS categoria, "
+        "COALESCE(SUM(preco * quantidade), 0) AS valor "
+        "FROM produtos GROUP BY 1 ORDER BY valor DESC").fetchall()
 
 
 def quantidade_por_produto(conn, limite=8):

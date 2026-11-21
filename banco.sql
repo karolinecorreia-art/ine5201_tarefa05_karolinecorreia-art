@@ -2,21 +2,21 @@
 -- INE5201 - Tarefa 05
 
 CREATE TABLE IF NOT EXISTS produtos (
-    codigo TEXT PRIMARY KEY,
-    nome TEXT NOT NULL,
+    codigo TEXT PRIMARY KEY NOT NULL CHECK(length(trim(codigo)) > 0),
+    nome TEXT NOT NULL CHECK(length(trim(nome)) > 0),
     categoria TEXT,
-    preco REAL NOT NULL,
-    quantidade INTEGER DEFAULT 0,
-    estoque_minimo INTEGER DEFAULT 5
+    preco REAL NOT NULL CHECK(preco > 0),
+    quantidade INTEGER NOT NULL DEFAULT 0 CHECK(quantidade >= 0),
+    estoque_minimo INTEGER NOT NULL DEFAULT 5 CHECK(estoque_minimo >= 0)
 );
 
 CREATE TABLE IF NOT EXISTS movimentacoes (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    produto_codigo TEXT,
-    tipo TEXT CHECK(tipo IN ('entrada', 'saida')),
-    quantidade INTEGER NOT NULL,
-    data TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (produto_codigo) REFERENCES produtos(codigo)
+    produto_codigo TEXT NOT NULL,
+    tipo TEXT NOT NULL CHECK(tipo IN ('entrada', 'saida')),
+    quantidade INTEGER NOT NULL CHECK(quantidade > 0),
+    data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (produto_codigo) REFERENCES produtos(codigo) ON DELETE RESTRICT
 );
 
 -- Trigger: a quantidade da movimentação deve ser maior que zero
