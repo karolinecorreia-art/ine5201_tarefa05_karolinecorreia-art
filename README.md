@@ -187,8 +187,6 @@ ine5201-tarefa05-karolinecorreia-art/
 ### Menu principal
 ![Menu principal](screenshots/01_menu.png)
 
-### Cadastro de produtos
-![Cadastro de produtos](screenshots/02_cadastro_produtos.png)
 ### Cadastro de produtos com valor nulo
 ![Cadastro de produtos com valor nulo](screenshots/02_1_cadastro_valor_0.png)
 ### Cadastro de produtos com letra ao invés de número
