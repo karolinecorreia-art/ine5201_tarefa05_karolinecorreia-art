@@ -203,7 +203,7 @@ ine5201-tarefa05-karolinecorreia-art/
 ### Registro de saída
 ![Registro de saída](screenshots/registro_saida.png).png)
 ![Estoque insuficiente](screenshots/03_estoque_insuficiente.png).png)
-![Saída com número negativo](screenshots/03_saida_negativo).png)
+![Saída com número negativo](screenshots/03_saida_negativo.png).png)
 
 ### Alerta de estoque baixo
 ![Alerta no menu principal](screenshots/05_alerta_estoque_baixo.png)
