@@ -183,12 +183,6 @@ ine5201-tarefa05-karolinecorreia-art/
 
 ## Uso do GitHub Copilot
 
-(Preencha com o que realmente aconteceu. Exemplos de itens: o que foi pedido ao Copilot Chat, o que ele sugeriu, o que foi aceito, o que foi corrigido ou recusado e por quê, e qual foi o resultado no projeto.)
-
-- **Pedido 1:** ...
-- **Sugestão do Copilot:** ...
-- **O que fizemos com ela:** ...
-
 ## Screenshots
 
 ### Menu principal
