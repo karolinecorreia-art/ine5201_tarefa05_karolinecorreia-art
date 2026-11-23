@@ -51,11 +51,6 @@ Sistema de controle de estoque com interface gráfica (FreeSimpleGUI) e banco de
 
 ## Uso do GitHub Copilot
 
-O GitHub Copilot (extensão e Copilot Chat no VS Code) foi usado como apoio em duas etapas:
-
-1. **Durante o desenvolvimento:** para tirar dúvidas sobre os triggers do `banco.sql` e sobre o uso de parâmetros `?` nas consultas SQL.
-2. **Na revisão final:** O Copilot Chat analisou o projeto e devolveu 8 grupos de sugestões de melhoria (print em `screenshots/13_copilot.png`). Cada sugestão foi avaliada, e só foram aplicadas as que melhoravam o sistema sem aumentar o risco de erros ou fugir do escopo da tarefa.
-
 ### Sugestões do Copilot e decisões tomadas
 
 | # | Sugestão do Copilot | Decisão | O que foi feito |
