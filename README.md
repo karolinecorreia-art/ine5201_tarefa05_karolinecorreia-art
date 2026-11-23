@@ -49,26 +49,6 @@ Sistema de controle de estoque com interface gráfica (FreeSimpleGUI) e banco de
 | Filtro por categoria | Atendido | consulta de estoque e histórico |
 | Exportação de relatório (CSV) | Atendido | `exportacao.py` |
 
-## Uso do GitHub Copilot
-
-### Sugestões do Copilot e decisões tomadas
-
-| # | Sugestão do Copilot | Decisão | O que foi feito |
-|---|---|---|---|
-| 1 | Reforçar a integridade do banco | Aplicada em parte | Colunas obrigatórias (`NOT NULL`) e regras `CHECK` no `banco.sql`: preço maior que zero, quantidades não negativas, tipo `entrada` ou `saida`. **Não aplicada:** "estoque mínimo maior que a quantidade", porque todo produto novo começa com quantidade 0 e a regra bloquearia o cadastro; e a normalização de categorias, fora do escopo. |
-| 2 | Movimentações seguras contra concorrência | Aplicada | O registro usa uma única transação com `BEGIN IMMEDIATE` (conferência do saldo e inserção juntas). O trigger continua como segunda camada de proteção. |
-| 3 | Melhorar o tratamento de erros | Aplicada | Erros do SQLite viram mensagens claras (banco em uso, inacessível, fechado ou regra recusada). Se o backup automático falhar ao sair, o usuário é avisado. |
-| 4 | Ampliar os testes | Aplicada | Os testes passaram de 10 para 23: atualização e exclusão, produto inexistente, quantidade inválida, restrições do banco, backup, CSV com acentos e banco bloqueado. |
-| 5 | Melhorar a interface | Aplicada em parte | O botão **Registrar** só é habilitado com produto e quantidade válidos, a tela de saída mostra o máximo disponível e salvar alterações pede confirmação. **Não aplicadas:** ordenação por coluna e paginação do histórico. |
-| 6 | Expandir os relatórios | Aplicada em parte | A categoria vazia aparece sempre como "Sem categoria". **Não aplicadas:** valores financeiros de entradas e saídas (a tabela `movimentacoes` não guarda o preço da época, então os valores sairiam errados), filtro por período e gráfico ao longo do tempo. |
-| 7 | Backups mais confiáveis | Aplicada em parte | O backup não sobrescreve arquivos criados no mesmo segundo e o arquivo gerado é validado (não vazio e íntegro). **Não aplicadas:** restauração pela interface e escolha da pasta de destino. |
-| 8 | Melhorar a documentação | Aplicada | README com instalação, execução, testes, tabelas, diagrama, localização do banco e dos backups. |
-
-### Aprendizados com o uso do Copilot
-
-- As sugestões são um ponto de partida e **precisam ser avaliadas**: uma delas (estoque mínimo menor ou igual à quantidade) quebraria o cadastro de produtos novos.
-- O Copilot ajudou a enxergar um problema real, o intervalo entre conferir o saldo e registrar a saída, que foi resolvido com a transação.
-- Todas as mudanças foram testadas com os testes automatizados antes de serem commitadas.
 
 ## Regras de integridade do banco
 
@@ -182,6 +162,25 @@ ine5201-tarefa05-karolinecorreia-art/
 ```
 
 ## Uso do GitHub Copilot
+
+### Sugestões do Copilot e decisões tomadas
+
+| # | Sugestão do Copilot | Decisão | O que foi feito |
+|---|---|---|---|
+| 1 | Reforçar a integridade do banco | Aplicada em parte | Colunas obrigatórias (`NOT NULL`) e regras `CHECK` no `banco.sql`: preço maior que zero, quantidades não negativas, tipo `entrada` ou `saida`. **Não aplicada:** "estoque mínimo maior que a quantidade", porque todo produto novo começa com quantidade 0 e a regra bloquearia o cadastro; e a normalização de categorias, fora do escopo. |
+| 2 | Movimentações seguras contra concorrência | Aplicada | O registro usa uma única transação com `BEGIN IMMEDIATE` (conferência do saldo e inserção juntas). O trigger continua como segunda camada de proteção. |
+| 3 | Melhorar o tratamento de erros | Aplicada | Erros do SQLite viram mensagens claras (banco em uso, inacessível, fechado ou regra recusada). Se o backup automático falhar ao sair, o usuário é avisado. |
+| 4 | Ampliar os testes | Aplicada | Os testes passaram de 10 para 23: atualização e exclusão, produto inexistente, quantidade inválida, restrições do banco, backup, CSV com acentos e banco bloqueado. |
+| 5 | Melhorar a interface | Aplicada em parte | O botão **Registrar** só é habilitado com produto e quantidade válidos, a tela de saída mostra o máximo disponível e salvar alterações pede confirmação. **Não aplicadas:** ordenação por coluna e paginação do histórico. |
+| 6 | Expandir os relatórios | Aplicada em parte | A categoria vazia aparece sempre como "Sem categoria". **Não aplicadas:** valores financeiros de entradas e saídas (a tabela `movimentacoes` não guarda o preço da época, então os valores sairiam errados), filtro por período e gráfico ao longo do tempo. |
+| 7 | Backups mais confiáveis | Aplicada em parte | O backup não sobrescreve arquivos criados no mesmo segundo e o arquivo gerado é validado (não vazio e íntegro). **Não aplicadas:** restauração pela interface e escolha da pasta de destino. |
+| 8 | Melhorar a documentação | Aplicada | README com instalação, execução, testes, tabelas, diagrama, localização do banco e dos backups. |
+
+### Aprendizados com o uso do Copilot
+
+- As sugestões são um ponto de partida e **precisam ser avaliadas**: uma delas (estoque mínimo menor ou igual à quantidade) quebraria o cadastro de produtos novos.
+- O Copilot ajudou a enxergar um problema real, o intervalo entre conferir o saldo e registrar a saída, que foi resolvido com a transação.
+- Todas as mudanças foram testadas com os testes automatizados antes de serem commitadas.
 
 ## Screenshots
 
