@@ -224,7 +224,7 @@ ine5201-tarefa05-karolinecorreia-art/
 ### Consulta de estoque de produto específico
 ![Consulta de estoque específico](screenshots/04_estoque_especifico.png)
 
-### Relatórios
+### Relatórios - Gráfico de Valor em estoque por categoria
 ![Gráfico](screenshots/06_relatorios_grafico1.png)
 ### Relatórios - Gráfico de quantidade de produtos
 ![Gráfico - Qtde. de produtos](screenshots/06_relatorios_grafico2.png)
