@@ -189,39 +189,55 @@ ine5201-tarefa05-karolinecorreia-art/
 
 ### Cadastro de produtos
 ![Cadastro de produtos](screenshots/02_cadastro_produtos.png)
+### Cadastro de produtos com valor nulo
 ![Cadastro de produtos com valor nulo](screenshots/02_1_cadastro_valor_0.png)
+### Cadastro de produtos com letra ao invés de número
 ![Cadastro de produtos com letras](screenshots/02_2_cadastro_valor_letra.png)
+### Confirmação para excluir produto
 ![Confirmação para excluir produto](screenshots/02_3_confirmacao_exclusao.png)
+### Falha ao excluir produto
 ![Exclusão de produto negada](screenshots/02_4_exclusao_negada.png)
+### Atualização de produto
 ![Atualização de produto](screenshots/02_5_produto_atualizado.png)
+### Cadastro de produto não existente
 ![Cadastro de produto existente](screenshots/02_cadastro_existente.png)
 
 ### Registro de entrada
 ![Entrada](screenshots/03_saida_resgistrada.png)
+### Entrada realizada
 ![Entrada realizada](screenshots/03_entreda_realizada.png)
 
 ### Registro de saída
 ![Registro de saída](screenshots/registro_saida.png).png)
+### Alerta de estoque insuficiente
 ![Estoque insuficiente](screenshots/03_estoque_insuficiente.png).png)
+### Saída com número negativo
 ![Saída com número negativo](screenshots/03_saida_negativo.png).png)
 
 ### Alerta de estoque baixo
 ![Alerta no menu principal](screenshots/05_alerta_estoque_baixo.png)
+### Alerta de estoque baixo no registro de entrada
 ![Alerta no registro de entrada](screenshots/03_1_estoque_baixo.png)
 
 ### Consulta de estoque
 ![Consulta de estoque](screenshots/04_consulta_estoque.png)
+### Consulta de estoque de produto específico
 ![Consulta de estoque específico](screenshots/04_estoque_especifico.png)
 
 ### Relatórios
 ![Gráfico](screenshots/06_relatorios_grafico1.png)
+### Relatórios - Gráfico de quantidade de produtos
 ![Gráfico - Qtde. de produtos](screenshots/06_relatorios_grafico2.png)
+### Histórico de movimentação
 ![Histórico de movimentação](screenshots/06_relatorios_historico_mov.png)
+### Estoque baixo
 ![Estoque baixo](screenshots/06_relatorios_estoque_baixo.png)
 
 ### Exportação CSV
 ![CSV](screenshots/exportacao_csv.png)
+### Excel - Histórico de movimentação
 ![Tabela Excel - Histórico de movimentação](screenshots/07_excel_historico_mov.png)
+### Excel - Estoque baixo
 ![Tabela Excel - Estoque baixo](screenshots/07_excel_estoque_baixo.png)
 
 ### Backup
